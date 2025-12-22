@@ -16,100 +16,59 @@ const headMu = "Mű" //Valtzozo deklaralasa a fejlec masodik cellajanak
 const headFogalmak = "Fogalmak" //Valtzozo deklaralasa a fejlec harmadik cellajanak
 
 
-//1. sor
+
 
 /**
- * @type {string} //Az elso sor elso ertekenek
+ * @type {{writer: string, work: string, concept1: string, concept2?: string}} // Az elso sor adatainak
  */
-const rowFirstSzerzo = "Apollinaire" //Valtozo deklaralas a tablazat elso soranak elso cellajahoz
-/**
- * @type {string} //Az elso sor masodik ertekenek
- */
-const rowFirstMu = "A megsebzett galamb és a szökőkút" //Valtozo deklaralas a tablazat elso soranak masodik cellajahoz
-/**
- * @type {string} //Az elso sor harmadik ertekenek
- */
-const rowFirstFogalmakFirst = "képvers" //Valtozo deklaralas a tablazat elso soranak harmadik cellajahoz
-/**
- * @type {string} //Az elso sor negyedik ertekenek
- */
-const rowFirstFogalmakSecond = "emlékezés" //Valtozo deklaralas a tablazat elso soranak negyedik cellajahoz
-
-
-//2. sor
+const firstApollinaireRow = { //elso sor objektumanak deklaralasa
+    writer: "Apollinaire", //az elso sor elso oszlop adata
+    work: "A megsebzett galamb és a szökőkút", //az elso sor masodik oszlop adata
+    concept1: "képvers", //az elso sor harmadik oszlop adata
+    concept2: "emlékezés", //az elso sor negyedik oszlop adata
+}
 
 /**
- * @type {string} //A masodik sor elso ertekenek
+ * @type {{writer: string, work: string, concept1: string, concept2?: string}} // A masodik sor adataibak
  */
-const rowSecondSzerzo = "Apollinaire" //Valtozo deklaralas a tablazat masodik soranak elso cellajahoz
-/**
- * @type {string} //A masodik sor masodik ertekenek
- */
-const rowSecondMu = "Búcsú" //Valtozo deklaralas a tablazat masodik soranak masodik cellajahoz
-/**
- * @type {string} //A masodik sor harmadik ertekenek
- */
-const rowSecondFogalmakFirst = "avantgárd" //Valtozo deklaralas a tablazat masodik soranak harmadik cellajahoz
-
-
-
-//3. sor
+const secondApollinaireRow = { // masodik sor objektumanak deklaralasa
+    writer: "Apollinaire", //a masodik sor elso oszlop adata
+    work: "Búcsú", //a masodik sor masodik oszlop adata
+    concept1: "avantgárd", //a masodik sor harmadik oszlop adata
+}
 
 /**
- * @type {string} //A harmadik sor elso ertekenek
+ * @type {{writer: string, work: string, concept1: string, concept2?: string}} // A harmadik sor adatainak
  */
-const rowThirdSzerzo = "Thomas Mann" //Valtozo deklaralas a tablazat harmadik soranak elso cellajahoz
-/**
- * @type {string} //A harmadik sor masodik ertekenek
- */
-const rowThirdMu = "Mario és a varázsló" //Valtozo deklaralas a tablazat harmadik soranak masodik cellajahoz
-/**
- * @type {string} //A harmadik sor harmadik ertekenek
- */
-const rowThirdFogalmakFirst = "kisregény" //Valtozo deklaralas a tablazat harmadik soranak harmadik cellajahoz
-
-
-
-//4. sor
+const firstThomasMannRow = { //harmadik sor objektumanak deklaralasa
+    writer: "Thomas Mann", //a harmadik sor elso oszlop adata
+    work: "Mario és a varázsló", //a harmadik sor masodik oszlop adata
+    concept1: "kisregény", //a harmadik sor harmadik oszlop adata
+}
 
 /**
- * @type {string} //A negyedik sor elso ertekenek
+ * @type {{writer: string, work: string, concept1: string, concept2?: string}} // A negyedik sor adatainak
  */
-const rowFourthSzerzo = "Franz Kafka" //Valtozo deklaralas a tablazat negyedik soranak elso cellajahoz
-/**
- * @type {string} //A negyedik sor masodik ertekenek
- */
-const rowFourthMu = "A per" //Valtozo deklaralas a tablazat negyedik soranak masodik cellajahoz
-/**
- * @type {string} //A negyedik sor harmadik ertekenek
- */
-const rowFourthFogalmakFirst = "regény" //Valtozo deklaralas a tablazat negyedik soranak harmadik cellajahoz
-
-
-
-
-//5. sor
+const firstFranzKafkaRow = { //negy edik sor  objektumanak deklaralasa
+    writer: "Franz Kafka", //a negyedik sor elso oszlop adata
+    work: "A per", //a negyedik sor masodik oszlop adata
+    concept1: "regény", //a negyedik sor harmadik oszlop adata
+}
 
 /**
- * @type {string} //Az otodik sor elso ertekenek
+ * @type {{writer: string, work: string, concept1: string, concept2?: string}} // Az otodik sor adatainak
  */
-const rowFifthSzerzo = "Franz Kafka" //Valtozo deklaralas a tablazat otodik soranak elso cellajahoz
-/**
- * @type {string} //Az otodik sor masodik ertekenek
- */
-const rowFifthMu = "Az átváltozás" //Valtozo deklaralas a tablazat otodik soranak masodik cellajahoz
-/**
- * @type {string} //Az otodik sor harmadik ertekenek
- */
-const rowFifthFogalmakFirst = "kisregény" //Valtozo deklaralas a tablazat otodik soranak harmadik cellajahoz
-/**
- * @type {string} //Az otodik sor negyedik ertekenek
- */
-const rowFifthFogalmakSecond = "groteszk" //Valtozo deklaralas a tablazat otodik soranak negyedik cellajahoz
+const secondFranzKafkaRow = { //otodik sor objektumanak deklaralasa
+    writer: "Franz Kafka", //az otodik sor elso oszlop adata
+    work: "Az átváltozás", //az otodik sor masodik oszlop adata
+    concept1: "kisregény", //az otodik sor harmadik oszlop adata
+    concept2: "groteszk", //az otodik sor negyedik oszlop adata
+}
 
-console.log(headSzerzo + " | " + headMu + " | " + headFogalmak + " | |") //Kiiratom a tablazat fejlecet a consolera
-console.log(rowFirstSzerzo + " | " + rowFirstMu + " | " + rowFirstFogalmakFirst + " | " + rowFirstFogalmakSecond) //Kiiratom a tablazat elso sorat
-console.log(rowSecondSzerzo + " | " + rowSecondMu + " | " + rowSecondFogalmakFirst + " | |") //Kiiratom a tablazat masodik sorat
-console.log(rowThirdSzerzo + " | " + rowThirdMu + " | " + rowThirdFogalmakFirst + " | |") //Kiiratom a tablazat harmadik sorat
-console.log(rowFourthSzerzo + " | " + rowFourthMu + " | " + rowFourthFogalmakFirst + " | |") //Kiiratom a tablazat negyedik sorat
-console.log(rowFifthSzerzo + " | " + rowFifthMu + " | " + rowFifthFogalmakFirst + " | " + rowFifthFogalmakSecond) //Kiiratom a tablazat otodik sorat
+
+console.log(headSzerzo + " | " + headMu + " | " + headFogalmak + " | |") //Tablazat fejlecenek kiiratasa
+console.log(firstApollinaireRow.writer + " | " + firstApollinaireRow.work + " | " + firstApollinaireRow.concept1 + " | " + firstApollinaireRow.concept2) //Tablazat elso soranak kiiratasa
+console.log(secondApollinaireRow.writer + " | " + secondApollinaireRow.work + " | " + secondApollinaireRow.concept1 + " | |") //Tablazat masodik soranak kiiratasa
+console.log(firstThomasMannRow.writer + " | " + firstThomasMannRow.work + " | " + firstThomasMannRow.concept1 + " | |") //Tablazat harmadik soranak kiiratasa
+console.log(firstFranzKafkaRow.writer + " | " + firstFranzKafkaRow.work + " | " + firstFranzKafkaRow.concept1 + " | |") //Tablazat negyedik soranak kiiratasa
+console.log(secondFranzKafkaRow.writer + " | " + secondFranzKafkaRow.work + " | " + secondFranzKafkaRow.concept1 + " | " + secondFranzKafkaRow.concept2) //Tablazat otodik soranak kiiratasa
