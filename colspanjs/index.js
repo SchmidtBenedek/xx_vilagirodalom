@@ -80,11 +80,35 @@ renderTable(dataArr) //Meghhívom a függvényem a dataArr tömbre aminek a vég
  */
 
 const addItemButton = document.createElement("button") //Gomb letrehozasa
-addItemButton.innerText = "Sor hozzáadása" //Gomb szovegenek allitasa
+addItemButton.innerText = "Szimpla egy sor hozzáadása" //Gomb szovegenek allitasa
 document.body.appendChild(addItemButton) //Hozzaadom a bodyhoz a gombot
 
 addItemButton.addEventListener("click", function(){ //Keszitek 1 esemenykezelot click esemenyre
-    console.log("Clickeles megtortent") //Uzenet a consolera hogy tenyleg megtortent e a clickeles
+    console.log("Clickeles megtortent, szimpla sor hozzadva") //Uzenet a consolera hogy tenyleg megtortent e a clickeles
+
+    /**
+     * @type {Literature} //Egy adat amit a tombhoz fogok fuzni
+     */
+    const newRow =  { //objektumot deklaralok amit kesobb a tombhoz fuzok
+        writer: "TestWriter", //wirter ertekadat
+        work: "TestWork", //work ertekadat
+        concept1: "TestConcept1", //concept1 ertekadas
+    }
+    dataArr.push(newRow) //Hozzafuzom az uj elobb elkeszitett objektumot a tombhoz
+    renderTable(dataArr) //Ujrahivom a fuggvenyt mostmar a hozzafutott adat is benne lesz es kliiratom
+})
+
+
+/**
+ * @type {HTMLButtonElement} gomb ami hozzafuz 1 duplas sort az adattombhoz es consolera iratja a tablazatot
+ */
+
+const addDoubleItemButton = document.createElement("button") //Gomb letrehozasa
+addDoubleItemButton.innerText = "Duplas sor hozzáadása" //Gomb szovegenek allitasa
+document.body.appendChild(addDoubleItemButton) //Hozzaadom a bodyhoz a gombot
+
+addDoubleItemButton.addEventListener("click", function(){ //Keszitek 1 esemenykezelot click esemenyre
+    console.log("Clickeles megtortent, duplas sor hozzadva") //Uzenet a consolera hogy tenyleg megtortent e a clickeles
 
     /**
      * @type {Literature} //Egy adat amit a tombhoz fogok fuzni
@@ -98,4 +122,3 @@ addItemButton.addEventListener("click", function(){ //Keszitek 1 esemenykezelot 
     dataArr.push(newRow) //Hozzafuzom az uj elobb elkeszitett objektumot a tombhoz
     renderTable(dataArr) //Ujrahivom a fuggvenyt mostmar a hozzafutott adat is benne lesz es kliiratom
 })
-
