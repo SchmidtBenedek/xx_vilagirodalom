@@ -34,30 +34,13 @@ const dataArr = [ //Tomb deklaralasa
 // Fejlec kiiratasa
 console.log(fejlec[0] + " | " + fejlec[1] + " | " + fejlec[2] + " |") //A consolera kiírom a tablazat fejlécet
 
-/**
- * @type {string} Apollinaire sorait tartalmazza
- */
-let apollinaireRowContent = dataArr[0].writer + " | " + dataArr[0].work1 + " | " + dataArr[0].concept1 + " |" //alap sor osszeallitasa
-if(dataArr[0].work2 && dataArr[0].concept2){ //vizsgalom hogy a work2 es concept2 definialva van-e
-    apollinaireRowContent += "\n|  _  | " + dataArr[0].work2 + " | " + dataArr[0].concept2 + " |" //ha definialva van a \n segitsegevel uj sorba irom azokat is
+for(const x of dataArr){ //vegigiteralok a dataArr elemein
+    /**
+     * @type {string} az aktualis sort
+     */
+    let currentRow = x.writer + " | " + x.work1 + " | " + x.concept1 + " |" //sor osszeallitasa
+    if(x.work2 && x.concept2){ // vizsgalom work2 es concept2 definialva van-e
+        currentRow += "\n|  _  | " + x.work2 + " | " + x.concept2 + " |" // Ha definialva van a \n segitsegevel uj sorba irom azokat is
+    }
+    console.log(currentRow) // kiirom a 2 soros stringet consolera
 }
-console.log(apollinaireRowContent) // kiirom a 2 soros stringet
-
-/**
- * @type {string} ThomasMann sorat tartalmazza
- */
-let thomasRowContent = dataArr[1].writer + " | " + dataArr[1].work1 + " | " + dataArr[1].concept1 + " |" //alap sor osszeallitasa
-if(dataArr[1].work2 && dataArr[1].concept2){ //vizsgalom hogy a work2 es concept2 definialva van-e
-    thomasRowContent += "\n|  _  | " + dataArr[1].work2 + " | " + dataArr[1].concept2 + " |" //ha definialva van a \n segitsegevel uj sorba irom azokat is
-}
-console.log(thomasRowContent) //kiirom a 2 soros stringet
-
-/**
- * @type {string} FranzKafka sorait tartalmazza
- */
-let kafkaRowContent = dataArr[2].writer + " | " + dataArr[2].work1 + " | " + dataArr[2].concept1 + " |" //alap sor osszeallitasa
-if(dataArr[2].work2 && dataArr[2].concept2){ //vizsgalom hogy a work2 es concept2 definialva van-e
-    kafkaRowContent += "\n|  _  | " + dataArr[2].work2 + " | " + dataArr[2].concept2 + " |" //ha definialva van a \n segitsegevel uj sorba irom azokat is
-}
-console.log(kafkaRowContent) //kiirom a 2 soros stringet
-
