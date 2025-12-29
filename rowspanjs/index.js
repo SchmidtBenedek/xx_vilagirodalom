@@ -67,33 +67,28 @@ const headRow = document.createElement("tr"); // sor letrehozas a fejlecnek
 tableHead.appendChild(headRow); //fejlechez hozzaadas
 
 /**
- * @type {HTMLTableCellElement} fejlec elso cellaja
+ * Fuggveny ami kirendereli a tablazat fejlecet
+ * @param {string[]} fejlecLista a fejlec elemeit tartalmazo tomb 
+ * @param {HTMLTableRowElement} parent amihez hozzafuzom majd az elemeket
+ * @returns {void}
  */
-const headSzerzoCell = document.createElement("th") //fejlec elso adatanak letrehozasa
-headRow.appendChild(headSzerzoCell) //elso adat fejlec sorhoz valo csatolasa
-headSzerzoCell.innerText = fejlec[0] //fejlec tombbol beallitom a megfelelo adatot
-
-/**
- * @type {HTMLTableCellElement} fejlec masodik cellaja
- */
-const headMuCell = document.createElement("th") //fejlec masodik adatanak letrehozasa
-headRow.appendChild(headMuCell) //masodik adat fejlec sorhoz valo csatolasa
-headMuCell.innerText = fejlec[1] //fejlec tombbol beallitom a megfelelo adatot
-
-/**
- * @type {HTMLTableCellElement} fejlec harmadik cellaja
- */
-const headFogalmakCell = document.createElement("th") //fejlec masodik adatanak letrehozasa
-headRow.appendChild(headFogalmakCell) //masodik adat fejlec sorhoz valo csatolasa
-headFogalmakCell.innerText = fejlec[2] //fejlec tombbol beallitom a megfelelo adatot
-
-
+function renderHeader(fejlecLista, parent){ //definialom a renderHeader fuggvenyt
+    for(const x of fejlecLista){ //vegigiteralok a fejlecLista parameterein
+        /**
+         * @type {HTMLTableCellElement} a fejlec aktualis cellaja
+         */
+        const headCell = document.createElement('th') //fejlec aktualis cellajanak letrehozasa
+        parent.appendChild(headCell) //hozzacsatolom a fejlechez a cellat
+        headCell.innerText = x //tartalma meg a tombb aktualis eleme lesz
+    }
+}
+renderHeader(fejlec, headRow) //Meghifom a fuggvenyt es elkesziti a fejlecet
 
 
 /**
- * Fuggveny ami kiiratja a tablazatot a consolera
+ * Fuggveny ami kirendereli a tablazat torzset
  * 
- * @param {LiteratureData} arr a tombb ami a tablazat adatait tartalmazza (torzset)
+ * @param {LiteratureData[]} arr a tombb ami a tablazat adatait tartalmazza (torzset)
  * @returns {void}
  */
 function renderTable(arr){ //definialom a renderTable fuggvenyt 1 parameterrel
@@ -122,7 +117,7 @@ function renderTable(arr){ //definialom a renderTable fuggvenyt 1 parameterrel
         cell2.innerText = x.work1 //Beallitom a az aktualis elem work erteket
 
         /**
-         * @type {HTMLTableCellElement} ////tablazat aktualis soranak harmadik cellaja
+         * @type {HTMLTableCellElement} //tablazat aktualis soranak harmadik cellaja
          */
         const cell3 = document.createElement("td"); //Letrehozok egy cellat a sor masodik adatanak
         row.appendChild(cell3) //Hozzacsatolom a cellat a sorhoz
