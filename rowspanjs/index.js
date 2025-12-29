@@ -54,7 +54,11 @@ const iroFranzKafka = { //FranzKafka objektum definialas
 
 console.log(headSzerzo + " | " + headMu + " | " + headFogalmak + " |") //A consolera kiírom a táblázat fejlécét
 console.log(iroApollinaire.writer + " | " + iroApollinaire.work1 + " | " + iroApollinaire.concept1 + " |") //kiírom a consolera a táblázat 1. sorát
-console.log(iroApollinaire.writer + " | " + iroApollinaire.work2 + " | " + iroApollinaire.concept2 + " |") //kiírom a consolera a táblázat 2. sorát
+console.log("|  _ " + " | " + iroApollinaire.work2 + " | " + iroApollinaire.concept2 + " |") //kiírom a consolera a táblázat 2. sorát
 console.log(iroThomasMann.writer + " | " + iroThomasMann.work1 + " | " + iroThomasMann.concept1 + " |") //kiírom a consolera a táblázat 3. sorát
 console.log(iroFranzKafka.writer + " | " + iroFranzKafka.work1 + " | " + iroFranzKafka.concept1 + " |") //kiírom a consolera a táblázat 4. sorát
-console.log(iroFranzKafka.writer + " | " + iroFranzKafka.work2 + " | " + iroFranzKafka.concept2 + " |") //kiírom a consolera a táblázat 5. sorát
+console.log("|  _ " + " | " + iroFranzKafka.work2 + " | " + iroFranzKafka.concept2 + " |") //kiírom a consolera a táblázat 5. sorát
+
+
+
+
