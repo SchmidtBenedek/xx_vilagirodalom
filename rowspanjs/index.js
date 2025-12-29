@@ -79,3 +79,27 @@ addSimpleButton.addEventListener("click", function(){ //a gomb click esemenyere 
     dataArr.push(newRow) //Hozzaadom az uj objektumot a meglevohoz
     renderTable(dataArr) //Meghivom a renderTable fuggvenyt, a mar bovitett tombbel es kiiratja a bovitett tablazatot
 })
+
+/**
+ * @type {HTMLButtonElement} gomb ami dupla sort ad hozza
+ */
+const addDoubleButton = document.createElement("button") //gomb letrehozasa
+addDoubleButton.innerText = "Dupla sor" //gomb szovegenek beallitasa
+document.body.appendChild(addDoubleButton) //Hozzacsatolom a bodyhoz a gombot
+
+addDoubleButton.addEventListener("click", function(){ //a gomb click esemenyere elkeszitek 1 esemenykezelot
+    console.log("Clickeles megtortent, uj dupla tesztsor hozzáadva") //Visszajelzo uzenet, hogy tenylegesen megtortent e a click
+
+    /**
+     * @type {LiteratureData} //Az uj objektum
+     */
+    const newRow = { //uj objektum definialasa, ez lesz a hozzadott tesztsor
+        writer: "TesztWriter", //writer tulajdonsag megadasa
+        work1: "TesztWork1", //work1 tulajdonsag megadas
+        concept1: "TesztConcept1", //concept1 tulajdonsag megadasa
+        work2: "TesztWork2", //work2 tulajdonsag megadasa
+        concept2: "TesztConcept2" //concept2 tulajdonsag megadasa
+    }
+    dataArr.push(newRow) //Hozzaadom az uj objektumot a meglevohoz
+    renderTable(dataArr) //Meghivom a renderTable fuggvenyt, a mar bovitett tombbel es kiiratja a bovitett tablazatot
+})
