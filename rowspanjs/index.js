@@ -8,7 +8,6 @@ const fejlec = ["Szerző", "Mű", "Fogalmak"] //Tomb deklaralasa a fejlecnek
  * @type {{writer: string, work1: string, concept1: string, work2?: string, concept2?: string}}  Apollinaire tulajdonsagok
  */
 const dataArr = [ //Tomb deklaralasa
-    
     { //Apollinairenek objektum definialas
         writer: "Apollinaire", //Iro tulajdonsag beallitasa
         work1: "A megsebzett galamb és a szökőkút", //mu1 beallitasa
@@ -34,13 +33,31 @@ const dataArr = [ //Tomb deklaralasa
 
 // Fejlec kiiratasa
 console.log(fejlec[0] + " | " + fejlec[1] + " | " + fejlec[2] + " |") //A consolera kiírom a tablazat fejlécet
-// Az elso objektum (Apollinaire) kiiratasa
-console.log(dataArr[0].writer + " | " + dataArr[0].work1 + " | " + dataArr[0].concept1 + " |") //kiírom a consolera a tablazat 1. sorat
-console.log("|  _ " + " | " + dataArr[0].work2 + " | " + dataArr[0].concept2 + " |") //kiírom a consolera a tablazat 2. sorat
-// A masodik objektum (Thomas Mann) kiiratasa
-console.log(dataArr[1].writer + " | " + dataArr[1].work1 + " | " + dataArr[1].concept1 + " |") //kiírom a consolera a tablazat 3. sorat
-// A harmadik objektum (Franz Kafka) kiiratasa
-console.log(dataArr[2].writer + " | " + dataArr[2].work1 + " | " + dataArr[2].concept1 + " |") //kiírom a consolera a tablazat 4. sorat
-console.log("|  _ " + " | " + dataArr[2].work2 + " | " + dataArr[2].concept2 + " |") //kiírom a consolera a tablazat 5. sorat
 
+/**
+ * @type {string} Apollinaire sorait tartalmazza
+ */
+let apollinaireRowContent = dataArr[0].writer + " | " + dataArr[0].work1 + " | " + dataArr[0].concept1 + " |" //alap sor osszeallitasa
+if(dataArr[0].work2 && dataArr[0].concept2){ //vizsgalom hogy a work2 es concept2 definialva van-e
+    apollinaireRowContent += "\n|  _  | " + dataArr[0].work2 + " | " + dataArr[0].concept2 + " |" //ha definialva van a \n segitsegevel uj sorba irom azokat is
+}
+console.log(apollinaireRowContent) // kiirom a 2 soros stringet
+
+/**
+ * @type {string} ThomasMann sorat tartalmazza
+ */
+let thomasRowContent = dataArr[1].writer + " | " + dataArr[1].work1 + " | " + dataArr[1].concept1 + " |" //alap sor osszeallitasa
+if(dataArr[1].work2 && dataArr[1].concept2){ //vizsgalom hogy a work2 es concept2 definialva van-e
+    thomasRowContent += "\n|  _  | " + dataArr[1].work2 + " | " + dataArr[1].concept2 + " |" //ha definialva van a \n segitsegevel uj sorba irom azokat is
+}
+console.log(thomasRowContent) //kiirom a 2 soros stringet
+
+/**
+ * @type {string} FranzKafka sorait tartalmazza
+ */
+let kafkaRowContent = dataArr[2].writer + " | " + dataArr[2].work1 + " | " + dataArr[2].concept1 + " |" //alap sor osszeallitasa
+if(dataArr[2].work2 && dataArr[2].concept2){ //vizsgalom hogy a work2 es concept2 definialva van-e
+    kafkaRowContent += "\n|  _  | " + dataArr[2].work2 + " | " + dataArr[2].concept2 + " |" //ha definialva van a \n segitsegevel uj sorba irom azokat is
+}
+console.log(kafkaRowContent) //kiirom a 2 soros stringet
 
