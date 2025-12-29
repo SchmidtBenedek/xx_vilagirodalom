@@ -70,27 +70,27 @@ table.appendChild(tableBody); //tbody tablazathoz valo satolasa
 const headRow = document.createElement("tr"); // sor letrehozas a fejlecnek
 tableHead.appendChild(headRow); //fejlechez hozzaadas
 
-/**
- * @type {HTMLTableCellElement} fejlec elso cellaja
- */
-const headSzerzoCell = document.createElement("th") //fejlec elso adatanak letrehozasa
-headRow.appendChild(headSzerzoCell) //elso adat fejlec sorhoz valo csatolasa
-headSzerzoCell.innerText = fejlec[0] //fejlec tombbol beallitom a megfelelo adatot
 
 /**
- * @type {HTMLTableCellElement} fejlec masodik cellaja
+ * A tablazat fejlecet kirendereli
+ * @param {string[]} fejlecArr a tomb amiben vannak a fejlec elemei 
+ * @param {HTMLTableRowElement} parent amihez hozzafuzom a cellakat
+ * @returns {void}
  */
-const headMuCell = document.createElement("th") //fejlec masodik adatanak letrehozasa
-headRow.appendChild(headMuCell) //masodik adat fejlec sorhoz valo csatolasa
-headMuCell.innerText = fejlec[1] //fejlec tombbol beallitom a megfelelo adatot
 
-/**
- * @type {HTMLTableCellElement} fejlec harmadik cellaja
- */
-const headFogalmakCell = document.createElement("th") //fejlec masodik adatanak letrehozasa
-headRow.appendChild(headFogalmakCell) //masodik adat fejlec sorhoz valo csatolasa
-headFogalmakCell.innerText = fejlec[2] //fejlec tombbol beallitom a megfelelo adatot
 
+function headerRender(fejlecArr, parent){ //letrehozok 1 fuggvenyt a fejlec kiiratasara
+    for(const x of fejlecArr){ //vegigiteralok a fejlecArr elemein
+        /**
+        * @type {HTMLTableCellElement} fejlec aktualis cellaja
+        */
+       const headCell = document.createElement('th') //fejlec aktualis cellajanak letrehozasa
+       parent.appendChild(headCell) //hozzacsatolom a fejlechez a cellat
+       headCell.innerText = x //tartalma meg a tombb aktualis eleme lesz
+    }
+}
+
+headerRender(fejlec, headRow) //meghivom a fuggvenyt, hogy kirenderelje a fejlecet
 
 /**
  *Ez a fuggveny megjelenit 1 tablazatot
@@ -126,7 +126,7 @@ function renderTable(arr){ //Definialok 1 fuggvenyt aminek a bemeneti parametere
         /**
          * @type {HTMLTableCellElement} ////tablazat aktualis soranak harmadik cellaja
          */
-        const cell3 = document.createElement("td"); //Letrehozok egy cellat a sor masodik adatanak
+        const cell3 = document.createElement("td"); //Letrehozok egy cellat a sor harmadik adatanak
         row.appendChild(cell3); //Hozzacsatolopm a cellat a sorhoz
         cell3.innerText = obj.concept1; //Beallitom a az aktualis elem concept1 erteket
 
@@ -144,7 +144,7 @@ function renderTable(arr){ //Definialok 1 fuggvenyt aminek a bemeneti parametere
 }
 }
 
-renderTable(dataArr) //Meghhívom a függvényem a dataArr tömbre aminek a végén kiiratásra kerül a consoloera a táblázat
+renderTable(dataArr) //Meghhívom a függvényem a dataArr tömbre aminek a végén kiiratásra kerül a táblázat
 
 
 /**
