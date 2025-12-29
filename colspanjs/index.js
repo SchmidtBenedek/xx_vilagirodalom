@@ -19,7 +19,7 @@ const fejlec = [ //Fejlec tomb deklaralasa
     },
 
     { // A fejlec harmadik objektuma
-        title: "Foglamak", //Fejlec harmadik adata
+        title: "Fogalmak", //Fejlec harmadik adata
         colspanIsTrue: true // logikai ertek ami kell, hogy tudjuk hol kap colspant a fejlec
     }
 ]
@@ -114,11 +114,12 @@ headerRender(fejlec, headRow) //meghivom a fuggvenyt, hogy kirenderelje a fejlec
 /**
  *Ez a fuggveny megjelenit 1 tablazatot
  * @param {Literature[]} arr az adattomb amin vegigiteralok
+ * @param {HTMLTableSectionElement} tbody a tablazat torzse
  * @returns {void}
  */
-function renderTable(arr){ //Definialok 1 fuggvenyt aminek a bemeneti parametere egy tomb lesz, jelen esetben a dataArr tomb lesz
+function renderTable(arr, tbody){ //Definialok 1 fuggvenyt aminek a bemeneti parametere egy tomb lesz, jelen esetben a dataArr tomb lesz
 
-    tableBody.innerHTML = ""; //tableBody tartalmat kiuritem
+    tbody.innerHTML = ""; //tbody tartalmat kiuritem
 
     for(const obj of arr){ //Egy for of ciklussal vegigiteralok a (arr) -> dataArr tombon
         
@@ -126,7 +127,7 @@ function renderTable(arr){ //Definialok 1 fuggvenyt aminek a bemeneti parametere
          * @type {HTMLTableRowElement} //A megjelenitendo tablazat sora
          */
         const row = document.createElement("tr") //letrehozok 1 sort a tablazatnak
-        tableBody.appendChild(row) //hozzacsatolom a sort a tablazat torzsehez
+        tbody.appendChild(row) //hozzacsatolom a sort a tablazat torzsehez
 
         /**
          * @type {HTMLTableCellElement} //tablazat aktualis soranak elso cellaja
@@ -157,11 +158,14 @@ function renderTable(arr){ //Definialok 1 fuggvenyt aminek a bemeneti parametere
             row.appendChild(cell4); //Hozzacsatolopm a cellat a sorhoz
             cell4.innerText = obj.concept2; //Beallitom a az aktualis elem concept2 erteket
         }
+        else{ //maskulonben
+            cell3.colSpan = 2 //a colspant 2 re allitom 
+        }
     
 }
 }
 
-renderTable(dataArr) //Meghhívom a függvényem a dataArr tömbre aminek a végén kiiratásra kerül a táblázat
+renderTable(dataArr, tableBody) //Meghhívom a függvényem a dataArr tömbre aminek a végén kiiratásra kerül a táblázat
 
 
 /**
@@ -184,7 +188,7 @@ addItemButton.addEventListener("click", function(){ //Keszitek 1 esemenykezelot 
         concept1: "TestConcept1", //concept1 ertekadas
     }
     dataArr.push(newRow) //Hozzafuzom az uj elobb elkeszitett objektumot a tombhoz
-    renderTable(dataArr) //Ujrahivom a fuggvenyt mostmar a hozzafutott adat is benne lesz es kliiratom
+    renderTable(dataArr, tableBody) //Ujrahivom a fuggvenyt mostmar a hozzafutott adat is benne lesz es kliiratom
 })
 
 
@@ -209,7 +213,7 @@ addDoubleItemButton.addEventListener("click", function(){ //Keszitek 1 esemenyke
         concept2: "TestConcept2", //concept2 ertekadas
     }
     dataArr.push(newRow) //Hozzafuzom az uj elobb elkeszitett objektumot a tombhoz
-    renderTable(dataArr) //Ujrahivom a fuggvenyt mostmar a hozzafutott adat is benne lesz es kliiratom
+    renderTable(dataArr, tableBody) //Ujrahivom a fuggvenyt mostmar a hozzafutott adat is benne lesz es kliiratom
 })
 
 
