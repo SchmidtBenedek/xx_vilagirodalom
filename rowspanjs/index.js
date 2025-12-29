@@ -36,6 +36,60 @@ const dataArr = [ //Tomb deklaralasa
     }
 ]
 
+
+
+
+/**
+ * @type {HTMLTableElement} a tablazat
+ */
+const table = document.createElement("table"); //Letrehozok 1 tablazatot
+document.body.appendChild(table); //Hozzacsatolom a bodyhoz
+
+/**
+ * @type {HTMLTableSectionElement} a tablazat fejlece
+ */
+const tableHead = document.createElement("thead"); //thead letrehozasa -> fejlec
+table.appendChild(tableHead); //thead tablazathoz csatolasa
+
+/**
+ * @type {HTMLTableSectionElement} a tablazat törzse
+ */
+
+const tableBody = document.createElement("tbody"); //tbody letrehozas -> torzs
+table.appendChild(tableBody); //tbody tablazathoz valo satolasa
+
+
+/**
+ * @type {HTMLTableRowElement} fejléc sora
+ */
+
+const headRow = document.createElement("tr"); // sor letrehozas a fejlecnek
+tableHead.appendChild(headRow); //fejlechez hozzaadas
+
+/**
+ * @type {HTMLTableCellElement} fejlec elso cellaja
+ */
+const headSzerzoCell = document.createElement("th") //fejlec elso adatanak letrehozasa
+headRow.appendChild(headSzerzoCell) //elso adat fejlec sorhoz valo csatolasa
+headSzerzoCell.innerText = fejlec[0] //fejlec tombbol beallitom a megfelelo adatot
+
+/**
+ * @type {HTMLTableCellElement} fejlec masodik cellaja
+ */
+const headMuCell = document.createElement("th") //fejlec masodik adatanak letrehozasa
+headRow.appendChild(headMuCell) //masodik adat fejlec sorhoz valo csatolasa
+headMuCell.innerText = fejlec[1] //fejlec tombbol beallitom a megfelelo adatot
+
+/**
+ * @type {HTMLTableCellElement} fejlec harmadik cellaja
+ */
+const headFogalmakCell = document.createElement("th") //fejlec masodik adatanak letrehozasa
+headRow.appendChild(headFogalmakCell) //masodik adat fejlec sorhoz valo csatolasa
+headFogalmakCell.innerText = fejlec[2] //fejlec tombbol beallitom a megfelelo adatot
+
+
+
+
 /**
  * Fuggveny ami kiiratja a tablazatot a consolera
  * 
@@ -43,16 +97,58 @@ const dataArr = [ //Tomb deklaralasa
  * @returns {void}
  */
 function renderTable(arr){ //definialom a renderTable fuggvenyt 1 parameterrel
-    console.log(fejlec[0] + " | " + fejlec[1] + " | " + fejlec[2] + " |"); //Kiirom consolera a tablazat fejlecet
+    tableBody.innerHTML = "" //tableBody tartalmat kiuritem
     for(const x of arr){ // vegigiteralok az adattomb elemein
         /**
-         * @type {string} tartalmazza az aktualis sort
+         * @type {HTMLTableRowElement} //A megjelenitendo tablazat sora
          */
-        let currentRow = x.writer + " | " + x.work1 + " | " + x.concept1 + " |" //asor osszeallitasa
-        if(x.work2 && x.concept2){ //vizsgalom work2 es concept2 definialva van-e
-            currentRow += "\n|  _  | " + x.work2 + " | " + x.concept2 + " |" // Ha definialva van a \n segitsegevel uj sorba irom azokat is
+
+        const row = document.createElement("tr") //letrehozok 1 sort a tablazatnak
+        tableBody.appendChild(row) //hozzacsatolom a sort a tablazat torzsehez
+
+        /**
+         * @type {HTMLTableCellElement} //tablazat aktualis soranak elso cellaja
+         */
+        const cell1 = document.createElement("td") //Letrehozok egy cellat a sor elso adatanak
+        row.appendChild(cell1) //Hozzacsatolopm a cellat a sorhoz
+        cell1.innerText = x.writer //Beallitom a az aktualis elem writer erteket
+
+
+        /**
+         * @type {HTMLTableCellElement} //tablazat aktualis soranak masodik cellaja
+         */
+        const cell2 = document.createElement("td"); //Letrehozok egy cellat a sor masodik adatanak
+        row.appendChild(cell2) //Hozzacsatolopm a cellat a sorhoz
+        cell2.innerText = x.work1 //Beallitom a az aktualis elem work erteket
+
+        /**
+         * @type {HTMLTableCellElement} ////tablazat aktualis soranak harmadik cellaja
+         */
+        const cell3 = document.createElement("td"); //Letrehozok egy cellat a sor masodik adatanak
+        row.appendChild(cell3) //Hozzacsatolom a cellat a sorhoz
+        cell3.innerText = x.concept1 //Beallitom a az aktualis elem concept1 erteket
+
+       if(x.work2 && x.concept2){ //Vizsgalom hogy definialva van e az aktualis elem work2 és concept2 erteke es ha igen
+            cell1.rowSpan = 2 //a cell1 rowSpan erteket 2 re allitom
+
+            /**
+             * @type {HTMLTableRowElement} //A megjelenitendo tablazat sora
+            */
+            const row2 = document.createElement("tr") //uj sort hozok letre az tobbi adatnak
+            tableBody.appendChild(row2) //hozzacsatolom a tableBodyhoz az uj sort
+            /**
+             * @type {HTMLTableCellElement} //tablazat aktualis soranak elso cellaja
+             */
+            const cell4 = document.createElement("td"); //uj cellat hozok letre az uj sor elso adatanak
+            row2.appendChild(cell4) //Hozzacsatolom a cellat a sorhoz
+            cell4.innerText = x.work2 //Beallitom az aktualis elem work2 erteket
+            /**
+             * @type {HTMLTableCellElement} //tablazat aktualis soranak masodik cellaja
+             */
+            const cell5 = document.createElement("td"); //uj cellat hozok letre az uj sor masodik adatanak
+            row2.appendChild(cell5) //Hozzacsatolom a cellat a sorhoz
+            cell5.innerText = x.concept2 //Beallitom az aktualis elem concept2 erteket
         }
-        console.log(currentRow) //kiirom a 2 soros stringet
     }
 }
 
@@ -103,3 +199,10 @@ addDoubleButton.addEventListener("click", function(){ //a gomb click esemenyere 
     dataArr.push(newRow) //Hozzaadom az uj objektumot a meglevohoz
     renderTable(dataArr) //Meghivom a renderTable fuggvenyt, a mar bovitett tombbel es kiiratja a bovitett tablazatot
 })
+
+
+
+
+
+
+
