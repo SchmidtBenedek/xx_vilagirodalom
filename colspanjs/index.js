@@ -3,11 +3,26 @@
  */
 
 
-/**
- * @type {string[]} //A fejlechez szukseges adatok tombje 
- */
-const fejlec = ["Szerző", "Mű", "Fogalmak"] //fejlec tomb deklaralasa
 
+
+/**
+ * @type {{title: string, colspanIsTrue?: boolean}[]} //A fejlecet tartalmazo adattomb
+ */
+const fejlec = [ //Fejlec tomb deklaralasa
+
+    { // A fejlec elso objektuma
+        title: "Szező" //Fejlec elso adata
+    },
+
+    { // A fejlec masodik objektuma
+        title: "Mű" //Fejlec masodik adata
+    },
+
+    { // A fejlec harmadik objektuma
+        title: "Foglamak", //Fejlec harmadik adata
+        colspanIsTrue: true // logikai ertek ami kell, hogy tudjuk hol kap colspant a fejlec
+    }
+]
 
 /**
  * @type {Literature[]} // A tablazat torzset tartalamazo adattomb
@@ -73,7 +88,7 @@ tableHead.appendChild(headRow); //fejlechez hozzaadas
 
 /**
  * A tablazat fejlecet kirendereli
- * @param {string[]} fejlecArr a tomb amiben vannak a fejlec elemei 
+ * @param {{title: string, colspanIsTrue?: boolean}[]} fejlecArr a tomb amiben vannak a fejlec elemei 
  * @param {HTMLTableRowElement} parent amihez hozzafuzom a cellakat
  * @returns {void}
  */
@@ -86,7 +101,11 @@ function headerRender(fejlecArr, parent){ //letrehozok 1 fuggvenyt a fejlec kiir
         */
        const headCell = document.createElement('th') //fejlec aktualis cellajanak letrehozasa
        parent.appendChild(headCell) //hozzacsatolom a fejlechez a cellat
-       headCell.innerText = x //tartalma meg a tombb aktualis eleme lesz
+       headCell.innerText = x.title //tartalma meg a tombb aktualis eleme lesz
+
+        if(x.colspanIsTrue){ //Vizsgálom, hogy az aktualis objektumnak a colspanIsTrue erteke milyen, es ha igaz
+            headCell.colSpan = 2 //Beallitom a colSpan erteket 2 re
+        }
     }
 }
 
@@ -124,7 +143,7 @@ function renderTable(arr){ //Definialok 1 fuggvenyt aminek a bemeneti parametere
         cell2.innerText = obj.work; //Beallitom a az aktualis elem work erteket
 
         /**
-         * @type {HTMLTableCellElement} ////tablazat aktualis soranak harmadik cellaja
+         * @type {HTMLTableCellElement} //tablazat aktualis soranak harmadik cellaja
          */
         const cell3 = document.createElement("td"); //Letrehozok egy cellat a sor harmadik adatanak
         row.appendChild(cell3); //Hozzacsatolopm a cellat a sorhoz
@@ -138,8 +157,6 @@ function renderTable(arr){ //Definialok 1 fuggvenyt aminek a bemeneti parametere
             row.appendChild(cell4); //Hozzacsatolopm a cellat a sorhoz
             cell4.innerText = obj.concept2; //Beallitom a az aktualis elem concept2 erteket
         }
-        
-
     
 }
 }
