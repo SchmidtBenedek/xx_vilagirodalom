@@ -1,3 +1,8 @@
+/**
+ * @typedef {{writer: string, work1: string, concept1: string, work2?: string, concept2?: string}} LiteratureData
+ */
+
+
 // Fejlec
 /**
  * @type {string[]} Fejlec tombjenek
@@ -5,7 +10,7 @@
 const fejlec = ["Szerző", "Mű", "Fogalmak"] //Tomb deklaralasa a fejlecnek
 
 /**
- * @type {{writer: string, work1: string, concept1: string, work2?: string, concept2?: string}}  Apollinaire tulajdonsagok
+ * @type {LiteratureData[]} A tomb ami alapjan keszul a tablazat
  */
 const dataArr = [ //Tomb deklaralasa
     { //Apollinairenek objektum definialas
@@ -31,16 +36,24 @@ const dataArr = [ //Tomb deklaralasa
     }
 ]
 
-// Fejlec kiiratasa
-console.log(fejlec[0] + " | " + fejlec[1] + " | " + fejlec[2] + " |") //A consolera kiírom a tablazat fejlécet
-
-for(const x of dataArr){ //vegigiteralok a dataArr elemein
-    /**
-     * @type {string} az aktualis sort
-     */
-    let currentRow = x.writer + " | " + x.work1 + " | " + x.concept1 + " |" //sor osszeallitasa
-    if(x.work2 && x.concept2){ // vizsgalom work2 es concept2 definialva van-e
-        currentRow += "\n|  _  | " + x.work2 + " | " + x.concept2 + " |" // Ha definialva van a \n segitsegevel uj sorba irom azokat is
+/**
+ * Fuggveny ami kiiratja a tablazatot a consolera
+ * 
+ * @param {LiteratureData} arr a tombb ami a tablazat adatait tartalmazza (torzset)
+ * @returns {void}
+ */
+function renderTable(arr){ //definialom a renderTable fuggvenyt 1 parameterrel
+    console.log(fejlec[0] + " | " + fejlec[1] + " | " + fejlec[2] + " |"); //Kiirom consolera a tablazat fejlecet
+    for(const x of arr){ // vegigiteralok az adattomb elemein
+        /**
+         * @type {string} tartalmazza az aktualis sort
+         */
+        let currentRow = x.writer + " | " + x.work1 + " | " + x.concept1 + " |" //asor osszeallitasa
+        if(x.work2 && x.concept2){ //vizsgalom work2 es concept2 definialva van-e
+            currentRow += "\n|  _  | " + x.work2 + " | " + x.concept2 + " |" // Ha definialva van a \n segitsegevel uj sorba irom azokat is
+        }
+        console.log(currentRow) //kiirom a 2 soros stringet
     }
-    console.log(currentRow) // kiirom a 2 soros stringet consolera
 }
+
+renderTable(dataArr) //meghivom a fuggvenyt es ez kiiratja a tablazatot a consolera 
