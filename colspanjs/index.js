@@ -11,7 +11,7 @@
 const fejlec = [ //Fejlec tomb deklaralasa
 
     { // A fejlec elso objektuma
-        title: "Szező" //Fejlec elso adata
+        title: "Szerző" //Fejlec elso adata
     },
 
     { // A fejlec masodik objektuma
