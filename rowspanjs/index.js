@@ -89,17 +89,18 @@ renderHeader(fejlec, headRow) //Meghifom a fuggvenyt es elkesziti a fejlecet
  * Fuggveny ami kirendereli a tablazat torzset
  * 
  * @param {LiteratureData[]} arr a tombb ami a tablazat adatait tartalmazza (torzset)
+ * @param {HTMLTableSectionElement} tbody tablazat torzse
  * @returns {void}
  */
-function renderTable(arr){ //definialom a renderTable fuggvenyt 1 parameterrel
-    tableBody.innerHTML = "" //tableBody tartalmat kiuritem
+function renderTable(arr, tbody){ //definialom a renderTable fuggvenyt
+    tbody.innerHTML = "" //tableBody tartalmat kiuritem
     for(const x of arr){ // vegigiteralok az adattomb elemein
         /**
          * @type {HTMLTableRowElement} //A megjelenitendo tablazat sora
          */
 
         const row = document.createElement("tr") //letrehozok 1 sort a tablazatnak
-        tableBody.appendChild(row) //hozzacsatolom a sort a tablazat torzsehez
+        tbody.appendChild(row) //hozzacsatolom a sort a tablazat torzsehez
 
         /**
          * @type {HTMLTableCellElement} //tablazat aktualis soranak elso cellaja
@@ -130,7 +131,7 @@ function renderTable(arr){ //definialom a renderTable fuggvenyt 1 parameterrel
              * @type {HTMLTableRowElement} //A megjelenitendo tablazat sora
             */
             const row2 = document.createElement("tr") //uj sort hozok letre az tobbi adatnak
-            tableBody.appendChild(row2) //hozzacsatolom a tableBodyhoz az uj sort
+            tbody.appendChild(row2) //hozzacsatolom a tableBodyhoz az uj sort
             /**
              * @type {HTMLTableCellElement} //tablazat aktualis soranak elso cellaja
              */
@@ -147,7 +148,7 @@ function renderTable(arr){ //definialom a renderTable fuggvenyt 1 parameterrel
     }
 }
 
-renderTable(dataArr) //meghivom a fuggvenyt es ez kiiratja a tablazatot a consolera 
+renderTable(dataArr, tableBody) //meghivom a fuggvenyt es ez kiiratja a tablazatot
 
 /**
  * @type {HTMLButtonElement} gomb ami szimpla, egyszeru sort ad hozza
@@ -168,7 +169,7 @@ addSimpleButton.addEventListener("click", function(){ //a gomb click esemenyere 
         concept1: "TesztConcept1" //concept1 tulajdonsag megadasa
     }
     dataArr.push(newRow) //Hozzaadom az uj objektumot a meglevohoz
-    renderTable(dataArr) //Meghivom a renderTable fuggvenyt, a mar bovitett tombbel es kiiratja a bovitett tablazatot
+    renderTable(dataArr, tableBody) //Meghivom a renderTable fuggvenyt, a mar bovitett tombbel es kiiratja a bovitett tablazatot
 })
 
 /**
@@ -192,7 +193,7 @@ addDoubleButton.addEventListener("click", function(){ //a gomb click esemenyere 
         concept2: "TesztConcept2" //concept2 tulajdonsag megadasa
     }
     dataArr.push(newRow) //Hozzaadom az uj objektumot a meglevohoz
-    renderTable(dataArr) //Meghivom a renderTable fuggvenyt, a mar bovitett tombbel es kiiratja a bovitett tablazatot
+    renderTable(dataArr, tableBody) //Meghivom a renderTable fuggvenyt, a mar bovitett tombbel es kiiratja a bovitett tablazatot
 })
 
 
