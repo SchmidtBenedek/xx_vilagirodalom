@@ -6,57 +6,48 @@
     <title>Document</title>
 </head>
 <body>
-    
     <style>
         table, th, td {
             border: 1px solid black;
             border-collapse: collapse;
         }
     </style>
-    
-<table>
+    <table>
     <thead>
         <tr>
             <th>Szerző</th>
             <th>Mű</th>
-            <th colspan="2">Fogalmak</th>
+            <th>Fogalmak</th>
         </tr>
     </thead>
-    <tbody id="tablebody">
-
+    <tbody>
         <tr>
-            <td>Apollinaire</td>
+            <td rowspan="2">Apollinaire</td>
             <td>A megsebzett galamb és a szökőkút</td>
             <td>képvers</td>
-            <td>emlékezés</td>
         </tr>
         <tr>
-            <td>Apollinaire</td>
             <td>Búcsú</td>
-            <td colspan="2">avantgárd</td>
+            <td>avantgárd</td>
         </tr>
         <tr>
             <td>Thomas Mann</td>
             <td>Mario és a varázsló</td>
-            <td colspan="2">kisregény</td>
+            <td>kisregény</td>
         </tr>
         <tr>
-            <td>Franz Kafka</td>
+            <td rowspan="2">Franz Kafka</td>
             <td>A per</td>
-            <td colspan="2">regény</td>
+            <td>regény</td>
         </tr>
         <tr>
-            <td>Franz Kafka</td>
             <td>Az átváltozás</td>
             <td>kisregény</td>
-            <td>groteszk</td>
         </tr>
-
-        
     </tbody>
 </table>
-<button id="simplebutton">Szimpla egy sor hozzáadás</button>
-<button id="doublebutton">Dupla sor hozzáadás</button>
+<button id="simplebutton">Szimpla sor</button>
+<button id="doublebutton">Dupla sor</button>
 <script src="index.js"></script>
 </body>
 </html>
