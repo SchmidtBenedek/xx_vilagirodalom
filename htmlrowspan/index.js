@@ -71,25 +71,11 @@ function addRow(newRow, tableBody){ //fugvenyt definialok 2 parameterrel
     tableBody.appendChild(row) //hozzafuzonm a tableBodyhoz
 
     /**
-     * @type {HTMLTableCellElement} a tablazat tesztsoranak elso cellaja
+     * @type {HTMLTableCellElement} a tablazat elso soranak elso cellaja
      */
-    const cell1 = document.createElement("td") //cella letrehozasa
-    row.appendChild(cell1) //hozzaadom az uj sorhoz
-    cell1.innerText = newRow.writer //beallitom a writer tulajdonsagat a newRow objektumbol
-
-    /**
-     * @type {HTMLTableCellElement} a tablazat tesztsoranak masodik cellaja
-     */
-    const cell2 = document.createElement("td") //cella letrehozasa
-    row.appendChild(cell2) //hozaadom az uj sorhoz
-    cell2.innerText = newRow.work1 //beallitom a work1 tulajdonsagat a newRow objektumbol
-
-    /**
-     * @type {HTMLTableCellElement} a tablazat tesztsoranak harmadik cellaja
-     */
-    const cell3 = document.createElement("td") //cella letrehozasa
-    row.appendChild(cell3) //hozzaadom az uj sorhoz
-    cell3.innerText = newRow.concept1 //beallitom a concept1 tulajdonsagat a newRow objektumbol
+    const cell1 = createCell(newRow.writer, row) //cellat hozok letre writer tulajdonsaggal, uj sorhoz csatolom, majd valtzozoba teszem hogy kesobb tudjam hasznalni mert kell a rowspanhez
+    createCell(newRow.work1, row) //cellat hozok letre work1 tulajdonsaggal majd uj sorhoz csatolom
+    createCell(newRow.concept1, row) //cellat hozok letre concept1 tulajdonsaggal majd uj sorhoz csatolom
 
     if(newRow.work2 !== undefined && newRow.concept2 !== undefined){ //vizsgalom hogy work2 es concept2 definialva van e
         cell1.rowSpan = 2 //cell1 rowSpanjat 2 re allitom
@@ -100,18 +86,25 @@ function addRow(newRow, tableBody){ //fugvenyt definialok 2 parameterrel
         const row2 = document.createElement("tr") //uj sort hozok letre
         tableBody.appendChild(row2)  //hozzafuzom tbodyhoz
 
-        /**
-         * @type {HTMLTableCellElement} a tablazat masodik tesztsoranak masodik cellaja
-         */
-        const cell4 = document.createElement("td") //cella letrehozasa
-        row2.appendChild(cell4) //hozzaadom az uj sorhoz
-        cell4.innerText = newRow.work2 //beallitom a work2 tulajdonsagat a newRow objektumbol
-
-        /**
-         * @type {HTMLTableCellElement} a tablazat masodik tesztsoranak harmadik cellaja
-         */
-        const cell5 = document.createElement("td") //cella letrehozasa
-        row2.appendChild(cell5) //hozzaadom az uj sorhoz
-        cell5.innerText = newRow.concept2 //beallitom a concept2 tulajdonsagat a newRow objektumbol
+        createCell(newRow.work2, row2) //cellat hozok letre work2 tulajdonsaggal majd uj sorhoz csatolom
+        createCell(newRow.concept2, row2) //cellat hozok letre concept2 tulajdonsaggal majd uj sorhoz csatolom
     }
 } 
+
+/**
+ * Uj cellat hozzafuz efy adott sorhoz es returnol 1 cellat
+ * 
+ * @param {string} cellContent a cella tartalma
+ * @param {HTMLTableRowElement} parent sor amihez hozzafuzesre kerul
+ * @returns {HTMLTableCellElement}
+ */
+function createCell(cellContent, parent){ //fugvenyt keszitek uj cella letrehozashoz
+    /**
+     * @type {HTMLTableCellElement} a cella
+     */
+    const cell = document.createElement("td") //letrehozok 1 cellat
+    parent.appendChild(cell) //sorzozc hozzafuzom
+    cell.innerText = cellContent //tartalom allitasa
+
+    return cell //visszaterek a kesz cellaval
+}
